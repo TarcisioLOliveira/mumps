@@ -53,7 +53,7 @@ elseif(CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
   )
 
   if(NOT CMAKE_CROSSCOMPILING AND NOT CRAY)
-    add_compile_options(-mtune=native)
+    add_compile_options(-march=native)
   endif()
 
   if(intsize64)

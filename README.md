@@ -1,5 +1,27 @@
 # MUMPS sparse solver
 
+Personal fork [scivision/mumps](https://github.com/scivision/mumps). Differences:
+- Uses `-march=native` instead of `-mtune-native`
+- The following build instructions:
+
+On Linux, install the necessary dependencies:
+
+```sh
+sudo apt install libmetis-dev libscotch-dev libptscotch-dev libscotchmetis-dev libscotchparmetis-dev liblapack3 libscalapack-mpich-dev libmpich-dev
+```
+or
+```sh
+sudo dnf install metis-devel scotch-devel ptscotch-mpich-devel-parmetis lapack-devel scalapack-mpich-devel mpich-devel
+```
+and compile with:
+```sh
+mkdir build
+cd build
+cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DBUILD_DOUBLE=ON -DBUILD_SINGLE=ON -DBUILD_SHARED_LIBS=ON -Dfind=ON -Dgemmt=ON -Dparallel=ON -Dmetis=ON -Dscotch=ON -DCMAKE_INSTALL_PREFIX=/opt/mumps
+make -j4
+sudo make install
+```
+
 [![ci](https://github.com/scivision/mumps/actions/workflows/ci.yml/badge.svg)](https://github.com/scivision/mumps/actions/workflows/ci.yml)
 [![ci_build](https://github.com/scivision/mumps/actions/workflows/ci_build.yml/badge.svg)](https://github.com/scivision/mumps/actions/workflows/ci_build.yml)
 [![oneapi-linux](https://github.com/scivision/mumps/actions/workflows/oneapi-linux.yml/badge.svg)](https://github.com/scivision/mumps/actions/workflows/oneapi-linux.yml)
